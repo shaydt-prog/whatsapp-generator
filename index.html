@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>WhatsApp Link Generator with QR Code - Free WhatsApp Chat Link Tool</title>
+  <meta name="description" content="Create instant WhatsApp chat links with QR codes. Free link sharing, premium QR download, and custom branded QR codes with your logo. Perfect for business cards and marketing.">
+  <meta name="keywords" content="whatsapp link generator, whatsapp qr code, wa.me link, whatsapp business, qr code generator, whatsapp chat link, whatsapp marketing, click to chat">
+  <meta name="author" content="WhatsApp Link Generator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://yoursite.com/">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yoursite.com/">
+  <meta property="og:title" content="WhatsApp Link Generator - Create QR Codes for WhatsApp">
+  <meta property="og:description" content="Generate WhatsApp links and QR codes instantly. Free sharing, premium downloads, and branded QR codes for your business.">
+  <meta property="og:image" content="https://yoursite.com/og-image.jpg">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://yoursite.com/">
+  <meta property="twitter:title" content="WhatsApp Link Generator - Create QR Codes">
+  <meta property="twitter:description" content="Generate WhatsApp links and QR codes instantly. Free sharing, premium downloads.">
+  <meta property="twitter:image" content="https://yoursite.com/twitter-image.jpg">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>">
+  
+  <!-- Schema.org for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "WhatsApp Link Generator",
+    "description": "Create instant WhatsApp chat links with QR codes",
+    "applicationCategory": "BusinessApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "operatingSystem": "Any",
+    "url": "https://yoursite.com"
+  }
+  </script>
+  
+  <!-- PayPal Payment Integration -->
+  <script src="https://www.paypal.com/sdk/js?client-id=ASdRwNDcluU6hu1aeqojXscExznSWHUuhIAtzdjYPMwHwNZSyIIv67aR6eWczmGTWQE2xPcx-fpPowL-&currency=USD"></script>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Work Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .mono {
+      font-family: 'Space Mono', monospace;
+    }
+    
+    .container {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ecfdf5 0%, #ccfbf1 50%, #cffafe 100%);
+      padding: 2rem;
+    }
+    
+    .main-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    /* Header with CTA */
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .header-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+      border-radius: 16px;
+      margin-bottom: 1rem;
+      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+    }
+    
+    .header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 0.5rem;
+    }
+    
+    .header-subtitle {
+      font-size: 1.125rem;
+      color: #6b7280;
+      margin-bottom: 1rem;
+    }
+    
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: #059669;
+      font-weight: 600;
+    }
+    
+    /* Pricing Cards */
+    .pricing-section {
+      margin-bottom: 3rem;
+    }
+    
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .pricing-card {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      border: 2px solid #e5e7eb;
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.3s;
+      position: relative;
+    }
+    
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    }
+    
+    .pricing-card.popular {
+      border-color: #10b981;
+      background: rgba(255, 255, 255, 0.95);
+    }
+    
+    .popular-badge {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: linear-gradient(135deg, #10b981, #14b8a6);
+      color: white;
+      padding: 0.25rem 1rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    
+    .plan-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 0.5rem;
+    }
+    
+    .plan-price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #10b981;
+      margin-bottom: 0.25rem;
+    }
+    
+    .plan-price small {
+      font-size: 1rem;
+      color: #6b7280;
+      font-weight: 400;
+    }
+    
+    .plan-description {
+      color: #6b7280;
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .plan-features {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+    
+    .plan-features li {
+      padding: 0.5rem 0;
+      color: #374151;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    
+    .plan-features li::before {
+      content: "✓";
+      color: #10b981;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    
+    .plan-features li.disabled {
+      color: #9ca3af;
+      text-decoration: line-through;
+    }
+    
+    .plan-features li.disabled::before {
+      content: "✗";
+      color: #ef4444;
+    }
+    
+    /* Grid Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    @media (min-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      border-radius: 24px;
+      padding: 2rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 0.75rem;
+    }
+    
+    .input-row {
+      display: flex;
+      gap: 0.75rem;
+    }
+    
+    .input-field, .textarea-field, .select-field {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      border: 2px solid #e5e7eb;
+      background: white;
+      color: #111827;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+    
+    .select-field {
+      width: 130px;
+      font-weight: 500;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+      background-position: right 0.5rem center;
+      background-repeat: no-repeat;
+      background-size: 1.5em 1.5em;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+    
+    .input-field:focus, .textarea-field:focus, .select-field:focus {
+      outline: none;
+      border-color: #10b981;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+      transform: translateY(-1px);
+    }
+    
+    .textarea-field {
+      resize: none;
+      font-family: 'Work Sans', sans-serif;
+    }
+    
+    .hint {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-top: 0.5rem;
+    }
+    
+    .link-section {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e5e7eb;
+      animation: slideIn 0.4s;
+    }
+    
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .link-display-box {
+      padding: 0.75rem 1rem;
+      background: #ecfdf5;
+      border-radius: 12px;
+      border: 2px solid #a7f3d0;
+      margin-bottom: 0.75rem;
+    }
+    
+    .link-text {
+      font-size: 0.875rem;
+      color: #065f46;
+      word-break: break-all;
+    }
+    
+    /* Buttons */
+    .btn {
+      width: 100%;
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    
+    .btn:hover:not(:disabled)::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+    }
+    
+    .btn-free {
+      background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+      color: white;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+    }
+    
+    .btn-premium {
+      background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+      color: white;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    }
+    
+    .btn-pro {
+      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+      color: white;
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+    }
+    
+    .btn-outline {
+      background: white;
+      border: 2px solid #e5e7eb;
+      color: #374151;
+    }
+    
+    .success-ping {
+      position: absolute;
+      inset: 0;
+      background: #10b981;
+      border-radius: 12px;
+      animation: ping 1s;
+    }
+    
+    @keyframes ping {
+      75%, 100% { transform: scale(1.1); opacity: 0; }
+    }
+    
+    /* QR Preview */
+    .qr-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .qr-container {
+      width: 100%;
+      text-align: center;
+      animation: fadeScale 0.5s;
+    }
+    
+    @keyframes fadeScale {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    
+    .qr-box {
+      padding: 1.5rem;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      border: 4px solid #d1fae5;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    
+    .qr-box canvas {
+      display: block;
+      margin: 0 auto;
+      border-radius: 8px;
+    }
+    
+    .qr-badge {
+      margin-top: 1rem;
+      padding: 0.5rem 1.5rem;
+      background: #d1fae5;
+      border-radius: 999px;
+      display: inline-block;
+    }
+    
+    .qr-badge-text {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #065f46;
+    }
+    
+    .lock-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .lock-icon {
+      width: 48px;
+      height: 48px;
+      color: #f59e0b;
+    }
+    
+    .lock-text {
+      font-weight: 600;
+      color: #374151;
+      text-align: center;
+      padding: 0 2rem;
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 3rem 0;
+    }
+    
+    .empty-icon {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 1rem;
+      background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    
+    .modal.active {
+      display: flex;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: 24px;
+      padding: 2rem;
+      max-width: 500px;
+      width: 100%;
+      position: relative;
+      animation: modalSlide 0.3s;
+    }
+    
+    @keyframes modalSlide {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #6b7280;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    
+    .modal-close:hover {
+      background: #f3f4f6;
+      color: #111827;
+    }
+    
+    .modal-header {
+      margin-bottom: 1.5rem;
+    }
+    
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 0.5rem;
+    }
+    
+    .modal-subtitle {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+    
+    .feature-list {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+    
+    .feature-list li {
+      padding: 0.75rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .price-display {
+      text-align: center;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+      border-radius: 16px;
+      margin-bottom: 1.5rem;
+    }
+    
+    .price-amount {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #10b981;
+    }
+    
+    .price-label {
+      color: #6b7280;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+    
+    /* SEO Footer */
+    .seo-footer {
+      margin-top: 4rem;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 24px;
+    }
+    
+    .seo-content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 1rem;
+    }
+    
+    .seo-content h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #374151;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .seo-content p {
+      color: #6b7280;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    
+    .seo-content ul {
+      margin-left: 1.5rem;
+      color: #6b7280;
+      line-height: 1.7;
+    }
+    
+    /* Responsive */
+    @media (max-width: 767px) {
+      .header h1 { font-size: 2rem; }
+      .container { padding: 1rem; }
+      .glass-card { padding: 1.5rem; }
+      .pricing-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+    // Icons
+    const MessageSquare = (props) => (
+      <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+    );
+
+    const Phone = (props) => (
+      <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+      </svg>
+    );
+
+    const Copy = (props) => (
+      <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+      </svg>
+    );
+
+    const Download = (props) => (
+      <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" x2="12" y1="15" y2="3"></line>
+      </svg>
+    );
+
+    const Lock = (props) => (
+      <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+      </svg>
+    );
+
+    const Check = (props) => (
+      <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    );
+
+    const Upload = (props) => (
+      <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="17 8 12 3 7 8"></polyline>
+        <line x1="12" x2="12" y1="3" y2="15"></line>
+      </svg>
+    );
+
+    const COUNTRY_CODES = [
+      { code: '+972', country: 'Israel', flag: '🇮🇱' },
+      { code: '+1', country: 'US/CA', flag: '🇺🇸' },
+      { code: '+44', country: 'UK', flag: '🇬🇧' },
+      { code: '+91', country: 'India', flag: '🇮🇳' },
+      { code: '+86', country: 'China', flag: '🇨🇳' },
+      { code: '+49', country: 'Germany', flag: '🇩🇪' },
+      { code: '+33', country: 'France', flag: '🇫🇷' },
+      { code: '+971', country: 'UAE', flag: '🇦🇪' },
+    ];
+
+    function WhatsAppLinkGenerator() {
+      const [countryCode, setCountryCode] = useState('+972');
+      const [phoneNumber, setPhoneNumber] = useState('');
+      const [message, setMessage] = useState('');
+      const [whatsappLink, setWhatsappLink] = useState('');
+      const [qrCodeDataUrl, setQrCodeDataUrl] = useState('');
+      const [copied, setCopied] = useState(false);
+      const [userPlan, setUserPlan] = useState('free'); // free, basic, pro
+      const [showModal, setShowModal] = useState(false);
+      const [modalType, setModalType] = useState(''); // download, logo, pro
+      const [logoImage, setLogoImage] = useState(null);
+      const canvasRef = useRef(null);
+      const logoInputRef = useRef(null);
+
+      useEffect(() => {
+        if (phoneNumber) {
+          const cleanPhone = phoneNumber.replace(/\D/g, '');
+          const fullPhone = countryCode.replace('+', '') + cleanPhone;
+          let link = `https://wa.me/${fullPhone}`;
+          
+          if (message.trim()) {
+            link += `?text=${encodeURIComponent(message)}`;
+          }
+          
+          setWhatsappLink(link);
+        } else {
+          setWhatsappLink('');
+        }
+      }, [countryCode, phoneNumber, message]);
+
+      useEffect(() => {
+        if (whatsappLink && canvasRef.current) {
+          generateQRCode();
+        }
+      }, [whatsappLink, logoImage]);
+
+      // Render PayPal buttons when modal opens
+      useEffect(() => {
+        if (showModal && modalType) {
+          setTimeout(() => {
+            handlePayment(modalType === 'download' ? 'basic' : 'pro');
+          }, 100);
+        }
+      }, [showModal, modalType]);
+
+      // Load saved plan on mount
+      useEffect(() => {
+        const savedPlan = localStorage.getItem('userPlan');
+        if (savedPlan) {
+          setUserPlan(savedPlan);
+        }
+      }, []);
+
+      const generateQRCode = () => {
+        try {
+          const qr = qrcode(0, 'L');
+          qr.addData(whatsappLink);
+          qr.make();
+          
+          const cellSize = 6;
+          const margin = 2;
+          const qrSize = qr.getModuleCount();
+          const size = qrSize * cellSize + margin * 2 * cellSize;
+          
+          const canvas = canvasRef.current;
+          canvas.width = size;
+          canvas.height = size;
+          const ctx = canvas.getContext('2d');
+          
+          // Background
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, size, size);
+          
+          // QR Code
+          ctx.fillStyle = '#0d4a2e';
+          for (let row = 0; row < qrSize; row++) {
+            for (let col = 0; col < qrSize; col++) {
+              if (qr.isDark(row, col)) {
+                ctx.fillRect(
+                  col * cellSize + margin * cellSize,
+                  row * cellSize + margin * cellSize,
+                  cellSize,
+                  cellSize
+                );
+              }
+            }
+          }
+          
+          // Add logo if premium
+          if (logoImage && (userPlan === 'pro' || userPlan === 'basic')) {
+            const logoSize = size * 0.2;
+            const logoX = (size - logoSize) / 2;
+            const logoY = (size - logoSize) / 2;
+            
+            // White background for logo
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(logoX - 4, logoY - 4, logoSize + 8, logoSize + 8);
+            
+            ctx.drawImage(logoImage, logoX, logoY, logoSize, logoSize);
+          }
+          
+          setQrCodeDataUrl(canvas.toDataURL('image/png'));
+        } catch (error) {
+          console.error('QR Error:', error);
+        }
+      };
+
+      const copyToClipboard = async () => {
+        if (whatsappLink) {
+          try {
+            await navigator.clipboard.writeText(whatsappLink);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+          } catch (error) {
+            const textArea = document.createElement('textarea');
+            textArea.value = whatsappLink;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+          }
+        }
+      };
+
+      const openPaymentModal = (type) => {
+        setModalType(type);
+        setShowModal(true);
+      };
+
+      const handlePayment = (plan) => {
+        const prices = {
+          basic: '2.99',
+          pro: '9.99'
+        };
+        
+        const planNames = {
+          basic: 'Basic Plan - QR Download',
+          pro: 'Pro Plan - QR + Logo'
+        };
+        
+        // PayPal integration
+        if (typeof paypal !== 'undefined') {
+          paypal.Buttons({
+            createOrder: (data, actions) => {
+              return actions.order.create({
+                purchase_units: [{
+                  amount: {
+                    value: prices[plan],
+                    currency_code: 'USD'
+                  },
+                  description: planNames[plan]
+                }]
+              });
+            },
+            onApprove: async (data, actions) => {
+              const order = await actions.order.capture();
+              console.log('Payment successful:', order);
+              
+              // Save to localStorage
+              localStorage.setItem('userPlan', plan);
+              localStorage.setItem('paymentId', order.id);
+              
+              setUserPlan(plan);
+              setShowModal(false);
+              alert('✅ Payment successful! You now have ' + plan + ' access.');
+            },
+            onError: (err) => {
+              console.error('Payment error:', err);
+              alert('❌ Payment failed. Please try again.');
+            }
+          }).render('#paypal-button-container-' + plan);
+        } else {
+          // Fallback for testing
+          alert(`Payment: $${prices[plan]} for ${planNames[plan]}`);
+          localStorage.setItem('userPlan', plan);
+          setUserPlan(plan);
+          setShowModal(false);
+        }
+      };
+
+      const downloadQRCode = () => {
+        if (userPlan === 'free') {
+          openPaymentModal('download');
+          return;
+        }
+        
+        if (qrCodeDataUrl) {
+          const link = document.createElement('a');
+          link.download = 'whatsapp-qr-code.png';
+          link.href = qrCodeDataUrl;
+          link.click();
+        }
+      };
+
+      const handleLogoUpload = (e) => {
+        if (userPlan === 'free') {
+          openPaymentModal('logo');
+          return;
+        }
+        
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const img = new Image();
+            img.onload = () => {
+              setLogoImage(img);
+            };
+            img.src = event.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      };
+
+      return (
+        <div className="container">
+          <div className="main-wrapper">
+            {/* Header */}
+            <header className="header">
+              <div className="header-icon">
+                <MessageSquare />
+              </div>
+              <h1>WhatsApp Link & QR Code Generator</h1>
+              <p className="header-subtitle">
+                Create instant WhatsApp chat links with professional QR codes
+              </p>
+              <div className="trust-badges">
+                <div className="badge">✓ Free Forever</div>
+                <div className="badge">✓ No Registration</div>
+                <div className="badge">✓ Instant Results</div>
+              </div>
+            </header>
+
+            {/* Pricing Cards */}
+            <section className="pricing-section">
+              <div className="pricing-cards">
+                <div className="pricing-card">
+                  <div className="plan-name">Free</div>
+                  <div className="plan-price">$0</div>
+                  <p className="plan-description">Perfect for testing and sharing links</p>
+                  <ul className="plan-features">
+                    <li>Generate unlimited WhatsApp links</li>
+                    <li>View QR code preview</li>
+                    <li>Copy link to clipboard</li>
+                    <li className="disabled">Download QR code</li>
+                    <li className="disabled">Add company logo</li>
+                    <li className="disabled">Analytics tracking</li>
+                  </ul>
+                  <button className="btn btn-outline" disabled>Current Plan</button>
+                </div>
+
+                <div className="pricing-card popular">
+                  <div className="popular-badge">Most Popular</div>
+                  <div className="plan-name">Basic</div>
+                  <div className="plan-price">$2.99 <small>one-time</small></div>
+                  <p className="plan-description">Download your QR code instantly</p>
+                  <ul className="plan-features">
+                    <li>Everything in Free</li>
+                    <li>Download high-res QR code (600x600px)</li>
+                    <li>PNG format ready for print</li>
+                    <li className="disabled">Add company logo</li>
+                    <li className="disabled">Analytics tracking</li>
+                  </ul>
+                  <button className="btn btn-premium" onClick={() => openPaymentModal('download')}>
+                    Unlock Download
+                  </button>
+                </div>
+
+                <div className="pricing-card">
+                  <div className="plan-name">Pro</div>
+                  <div className="plan-price">$9.99 <small>one-time</small></div>
+                  <p className="plan-description">Full branding & customization</p>
+                  <ul className="plan-features">
+                    <li>Everything in Basic</li>
+                    <li>Add your company logo to QR</li>
+                    <li>Custom colors & styling</li>
+                    <li>Click analytics (coming soon)</li>
+                    <li>Priority support</li>
+                  </ul>
+                  <button className="btn btn-pro" onClick={() => openPaymentModal('pro')}>
+                    Upgrade to Pro
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <div className="grid">
+              {/* Input Panel */}
+              <div className="glass-card">
+                <div className="form-group">
+                  <label className="label">
+                    <Phone />
+                    Phone Number
+                  </label>
+                  <div className="input-row">
+                    <select
+                      value={countryCode}
+                      onChange={(e) => setCountryCode(e.target.value)}
+                      className="select-field"
+                    >
+                      {COUNTRY_CODES.map((item) => (
+                        <option key={item.code} value={item.code}>
+                          {item.flag} {item.code}
+                        </option>
+                      ))}
+                    </select>
+                    <input
+                      type="tel"
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                      placeholder="501234567"
+                      className="input-field"
+                    />
+                  </div>
+                  <p className="hint">Enter phone number without country code</p>
+                </div>
+
+                <div className="form-group">
+                  <label className="label">
+                    <MessageSquare />
+                    Pre-filled Message (Optional)
+                  </label>
+                  <textarea
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Hello! I'd like to chat with you..."
+                    rows={4}
+                    className="textarea-field"
+                  />
+                  <p className="hint">This message appears pre-filled in the chat</p>
+                </div>
+
+                {(userPlan === 'pro' || userPlan === 'basic') && (
+                  <div className="form-group">
+                    <label className="label">
+                      <Upload />
+                      Company Logo (Pro Feature)
+                    </label>
+                    <input
+                      ref={logoInputRef}
+                      type="file"
+                      accept="image/*"
+                      onChange={handleLogoUpload}
+                      className="input-field"
+                    />
+                    <p className="hint">Upload your logo to embed in QR code</p>
+                  </div>
+                )}
+
+                {whatsappLink && (
+                  <div className="link-section">
+                    <label className="label">Generated Link (Free Forever!)</label>
+                    <div className="link-display-box">
+                      <p className="link-text mono">{whatsappLink}</p>
+                    </div>
+                    <button onClick={copyToClipboard} className="btn btn-free">
+                      {copied && <span className="success-ping"></span>}
+                      <Copy />
+                      {copied ? 'Copied!' : 'Copy Link (Free)'}
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* QR Preview Panel */}
+              <div className="glass-card qr-panel">
+                {whatsappLink ? (
+                  <div className="qr-container">
+                    <div className="qr-box">
+                      <canvas ref={canvasRef}></canvas>
+                      {userPlan === 'free' && (
+                        <div className="lock-overlay">
+                          <Lock className="lock-icon" />
+                          <p className="lock-text">
+                            Upgrade to download this QR code
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                    <div className="qr-badge">
+                      <p className="qr-badge-text">Scan to Chat</p>
+                    </div>
+
+                    <button
+                      onClick={downloadQRCode}
+                      className={`btn ${userPlan === 'free' ? 'btn-premium' : 'btn-free'}`}
+                      style={{ marginTop: '1rem' }}
+                    >
+                      <Download />
+                      {userPlan === 'free' ? 'Unlock Download - $2.99' : 'Download QR Code'}
+                    </button>
+
+                    {userPlan === 'free' && (
+                      <button
+                        onClick={() => openPaymentModal('logo')}
+                        className="btn btn-pro"
+                        style={{ marginTop: '0.5rem' }}
+                      >
+                        <Upload />
+                        Add Logo - $9.99
+                      </button>
+                    )}
+                  </div>
+                ) : (
+                  <div className="empty-state">
+                    <div className="empty-icon">
+                      <MessageSquare />
+                    </div>
+                    <p style={{fontWeight: 600, color: '#374151'}}>QR Code Preview</p>
+                    <p style={{fontSize: '0.875rem', color: '#6b7280'}}>Enter a phone number to generate</p>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Payment Modal */}
+            {showModal && (
+              <div className="modal active" onClick={() => setShowModal(false)}>
+                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                  <button className="modal-close" onClick={() => setShowModal(false)}>×</button>
+                  
+                  <div className="modal-header">
+                    <h3 className="modal-title">
+                      {modalType === 'download' && 'Unlock QR Download'}
+                      {modalType === 'logo' && 'Upgrade to Pro'}
+                      {modalType === 'pro' && 'Get Pro Access'}
+                    </h3>
+                    <p className="modal-subtitle">One-time payment, lifetime access</p>
+                  </div>
+
+                  {modalType === 'download' && (
+                    <>
+                      <div className="price-display">
+                        <div className="price-amount">$2.99</div>
+                        <p className="price-label">One-time payment</p>
+                      </div>
+                      <ul className="feature-list">
+                        <li><Check style={{width: 20, height: 20, color: '#10b981'}} /> Download unlimited QR codes</li>
+                        <li><Check style={{width: 20, height: 20, color: '#10b981'}} /> High resolution (600x600px)</li>
+                        <li><Check style={{width: 20, height: 20, color: '#10b981'}} /> Print-ready PNG format</li>
+                        <li><Check style={{width: 20, height: 20, color: '#10b981'}} /> Lifetime access</li>
+                      </ul>
+                      <div id="paypal-button-container-basic" style={{minHeight: '50px'}}></div>
+                      {typeof paypal === 'undefined' && (
+                        <button className="btn btn-premium" onClick={() => handlePayment('basic')}>
+                          Pay $2.99 - Unlock Download
+                        </button>
+                      )}
+                    </>
+                  )}
+
+                  {(modalType === 'logo' || modalType === 'pro') && (
+                    <>
+                      <div className="price-display">
+                        <div className="price-amount">$9.99</div>
+                        <p className="price-label">One-time payment</p>
+                      </div>
+                      <ul className="feature-list">
+                        <li><Check style={{width: 20, height: 20, color: '#10b981'}} /> Everything in Basic</li>
+                        <li><Check style={{width: 20, height: 20, color: '#10b981'}} /> Add your company logo</li>
+                        <li><Check style={{width: 20, height: 20, color: '#10b981'}} /> Custom branding</li>
+                        <li><Check style={{width: 20, height: 20, color: '#10b981'}} /> Click analytics (soon)</li>
+                        <li><Check style={{width: 20, height: 20, color: '#10b981'}} /> Priority support</li>
+                      </ul>
+                      <div id="paypal-button-container-pro" style={{minHeight: '50px'}}></div>
+                      {typeof paypal === 'undefined' && (
+                        <button className="btn btn-pro" onClick={() => handlePayment('pro')}>
+                          Pay $9.99 - Upgrade to Pro
+                        </button>
+                      )}
+                    </>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* SEO Content */}
+            <footer className="seo-footer">
+              <div className="seo-content">
+                <h2>WhatsApp Link Generator - Create Professional QR Codes</h2>
+                <p>
+                  Our WhatsApp Link Generator helps businesses and individuals create instant click-to-chat links and professional QR codes for WhatsApp. Perfect for business cards, marketing materials, and customer support.
+                </p>
+
+                <h3>Why Use a WhatsApp Link Generator?</h3>
+                <p>
+                  WhatsApp is the world's most popular messaging app with over 2 billion users. A WhatsApp link (wa.me link) allows anyone to start a conversation with you instantly without saving your number. This tool generates these links and creates scannable QR codes perfect for:
+                </p>
+                <ul>
+                  <li>Business cards and marketing materials</li>
+                  <li>Social media profiles and websites</li>
+                  <li>Customer support and sales</li>
+                  <li>Event promotions and networking</li>
+                  <li>Restaurant menus and retail stores</li>
+                </ul>
+
+                <h3>Features</h3>
+                <ul>
+                  <li><strong>Free Link Generation:</strong> Create unlimited WhatsApp links for free</li>
+                  <li><strong>QR Code Preview:</strong> See your QR code instantly</li>
+                  <li><strong>Premium Downloads:</strong> High-resolution QR codes for printing</li>
+                  <li><strong>Logo Branding:</strong> Add your company logo to QR codes (Pro)</li>
+                  <li><strong>Pre-filled Messages:</strong> Set custom greeting messages</li>
+                </ul>
+
+                <h3>How to Use</h3>
+                <p>
+                  Simply enter your WhatsApp phone number with the country code, optionally add a pre-filled message, and generate your link and QR code instantly. Share the link freely or upgrade to download professional QR codes for your marketing materials.
+                </p>
+              </div>
+            </footer>
+          </div>
+        </div>
+      );
+    }
+
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+    root.render(<WhatsAppLinkGenerator />);
+  </script>
+</body>
+</html>
