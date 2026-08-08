@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp QR Poster & Sticker Maker | whatsappqr.com</title>
+  <meta name="description" content="Create print-ready 'Scan to chat on WhatsApp' posters, table tents, window stickers and business cards with your own QR code. English, Hebrew and Arabic. Free preview, hi-res download.">
+  <link rel="canonical" href="https://whatsappqr.com/posters.html">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Heebo:wght@400;600;700;800&family=Cairo:wght@400;600;700;800&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', system-ui, sans-serif; color: #111827; background: linear-gradient(135deg, #ecfdf5 0%, #ccfbf1 50%, #cffafe 100%); min-height: 100vh; }
+    .disclaimer-bar { background: #1f2937; color: #e5e7eb; text-align: center; font-size: 0.8125rem; padding: 0.5rem 1rem; }
+    .disclaimer-bar strong { color: #fff; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    .top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .back { color: #059669; text-decoration: none; font-weight: 600; }
+    h1 { font-size: 2rem; margin-bottom: 0.25rem; }
+    .sub { color: #6b7280; margin-bottom: 1.5rem; }
+    .layout { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    @media (min-width: 900px) { .layout { grid-template-columns: 380px 1fr; align-items: start; } }
+    .card { background: rgba(255,255,255,0.9); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 8px 32px rgba(0,0,0,0.08); border-radius: 20px; padding: 1.5rem; }
+    label { display: block; font-size: 0.8125rem; font-weight: 600; color: #374151; margin: 1rem 0 0.4rem; }
+    label:first-child { margin-top: 0; }
+    input, select, textarea { width: 100%; padding: 0.65rem 0.85rem; border-radius: 10px; border: 2px solid #e5e7eb; font-size: 0.95rem; font-family: inherit; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: #10b981; }
+    .row { display: flex; gap: 0.6rem; }
+    .row .cc { width: 120px; flex: none; }
+    .seg { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+    .seg button, .lang button { padding: 0.6rem 0.5rem; border: 2px solid #e5e7eb; background: #fff; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 0.85rem; color: #374151; }
+    .seg button.active, .lang button.active { border-color: #10b981; background: #ecfdf5; color: #065f46; }
+    .lang { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+    .preview-card { display: flex; flex-direction: column; align-items: center; }
+    .stage { width: 100%; display: flex; justify-content: center; padding: 1rem; }
+    canvas { max-width: 100%; height: auto; box-shadow: 0 12px 40px rgba(0,0,0,0.18); border-radius: 6px; background: #fff; }
+    .btn { width: 100%; padding: 0.85rem 1.25rem; border-radius: 12px; border: none; font-size: 1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 0.75rem; }
+    .btn-green { background: linear-gradient(135deg, #10b981, #14b8a6); color: #fff; }
+    .btn-pro { background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: #fff; }
+    .btn-ghost { background: #fff; border: 2px solid #e5e7eb; color: #374151; }
+    .hint { font-size: 0.75rem; color: #6b7280; margin-top: 0.5rem; text-align: center; }
+    .pro-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; color: #7c3aed; background: #f5f3ff; border: 1px solid #e9d5ff; padding: 0.1rem 0.5rem; border-radius: 999px; margin-left: 0.35rem; }
+    .footer { text-align: center; color: #9ca3af; font-size: 0.8125rem; margin-top: 2.5rem; line-height: 1.7; }
+    .footer a { color: #059669; text-decoration: none; }
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 100; align-items: center; justify-content: center; padding: 1.5rem; }
+    .modal.active { display: flex; }
+    .modal-inner { background: #fff; border-radius: 20px; padding: 2rem; max-width: 460px; width: 100%; position: relative; }
+    .modal-inner h3 { font-size: 1.4rem; margin-bottom: 0.35rem; }
+    .modal-inner p { color: #6b7280; font-size: 0.9rem; }
+    .price { text-align: center; font-size: 2.5rem; font-weight: 800; color: #7c3aed; margin: 1rem 0 0.25rem; }
+    .close { position: absolute; top: 0.9rem; right: 0.9rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #6b7280; }
+    ul.feat { list-style: none; margin: 1rem 0; }
+    ul.feat li { padding: 0.5rem 0; border-bottom: 1px solid #f3f4f6; font-size: 0.92rem; }
+    ul.feat li::before { content: "✓ "; color: #7c3aed; font-weight: 800; }
+  </style>
+</head>
+<body>
+  <div class="disclaimer-bar"><strong>Independent tool.</strong> Not affiliated with, endorsed by, or sponsored by WhatsApp or Meta Platforms, Inc. &ldquo;WhatsApp&rdquo; is a trademark of Meta Platforms, Inc.</div>
+  <div class="wrap">
+    <div class="top">
+      <a class="back" href="/">← Back to the generator</a>
+    </div>
+    <h1>WhatsApp Poster &amp; Sticker Maker</h1>
+    <p class="sub">Turn your number into a print-ready &ldquo;Scan to chat&rdquo; poster, table tent, window sticker or business card. Free preview — hi-res print file with Pro.</p>
+
+    <div class="layout">
+      <!-- Controls -->
+      <div class="card">
+        <label>Phone number</label>
+        <div class="row">
+          <select id="cc" class="cc">
+            <option value="972">🇮🇱 +972</option>
+            <option value="1">🇺🇸 +1</option>
+            <option value="44">🇬🇧 +44</option>
+            <option value="91">🇮🇳 +91</option>
+            <option value="49">🇩🇪 +49</option>
+            <option value="33">🇫🇷 +33</option>
+            <option value="971">🇦🇪 +971</option>
+          </select>
+          <input id="phone" type="tel" placeholder="501234567">
+        </div>
+
+        <label>Template</label>
+        <div class="seg" id="tmpl">
+          <button data-t="a4" class="active">A4 Poster</button>
+          <button data-t="tent">Table Tent</button>
+          <button data-t="sticker">Window Sticker</button>
+          <button data-t="card">Business Card</button>
+        </div>
+
+        <label>Language</label>
+        <div class="lang" id="lang">
+          <button data-l="en" class="active">English</button>
+          <button data-l="he">עברית</button>
+          <button data-l="ar">العربية</button>
+        </div>
+
+        <label>Headline</label>
+        <input id="headline" type="text" maxlength="42">
+
+        <label>Business name (optional)</label>
+        <input id="biz" type="text" maxlength="30" placeholder="Your business">
+
+        <label>Accent color</label>
+        <input id="accent" type="color" value="#10b981" style="height:44px;padding:4px;">
+
+        <button class="btn btn-green" id="downloadBtn">⬇ Download hi-res PNG<span class="pro-tag">PRO</span></button>
+        <button class="btn btn-ghost" id="previewDl">Download watermarked preview (free)</button>
+        <p class="hint">Hi-res files are 300 DPI — ready for professional printing.</p>
+      </div>
+
+      <!-- Preview -->
+      <div class="card preview-card">
+        <div class="stage"><canvas id="canvas" width="420" height="594"></canvas></div>
+        <p class="hint" id="dims"></p>
+      </div>
+    </div>
+
+    <p class="footer">
+      Free tool by <a href="/">whatsappqr.com</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/refund.html">Refund</a> · <a href="mailto:support@whatsappqr.com">Contact</a><br>
+      Independent service, not affiliated with WhatsApp or Meta Platforms, Inc.
+    </p>
+  </div>
+
+  <!-- Pro modal -->
+  <div class="modal" id="modal">
+    <div class="modal-inner">
+      <button class="close" id="closeModal">×</button>
+      <h3>Unlock hi-res print files</h3>
+      <p>The QR generator and watermarked previews are always free. Pro unlocks clean, 300-DPI print files for all poster formats — one-time payment, use forever on this device.</p>
+      <div class="price">$9.99</div>
+      <ul class="feat">
+        <li>All formats: A4 poster, table tent, window sticker, business card</li>
+        <li>300-DPI, print-shop ready, no watermark</li>
+        <li>English, Hebrew &amp; Arabic layouts</li>
+        <li>Custom colors and headline</li>
+      </ul>
+      <div id="paypal-poster" style="min-height:48px;"></div>
+      <p class="hint">Secure payment via PayPal. See our <a href="/refund.html">refund policy</a>. Already paid? <a href="#" id="restore">Restore purchase</a>.</p>
+    </div>
+  </div>
+
+  <script src="https://www.paypal.com/sdk/js?client-id=ASdRwNDcluU6hu1aeqojXscExznSWHUuhIAtzdjYPMwHwNZSyIIv67aR6eWczmGTWQE2xPcx-fpPowL-&currency=USD"></script>
+  <script>
+    // ---- State ----
+    const state = { t: 'a4', l: 'en', accent: '#10b981' };
+    const isPro = () => localStorage.getItem('userPlan') === 'pro';
+
+    // Print sizes in millimetres [w, h]
+    const SIZES = { a4: [210, 297], tent: [105, 148], sticker: [150, 150], card: [85, 55] };
+    const PREVIEW_PXMM = 2;              // on-screen scale
+    const PRINT_PXMM = 300 / 25.4;       // 300 DPI
+
+    const STRINGS = {
+      en: { dir: 'ltr', font: 'Poppins',
+            a4: 'Message us on WhatsApp', tent: 'Scan to order on WhatsApp',
+            sticker: "We're on WhatsApp", card: 'Chat with us on WhatsApp',
+            scan: 'Scan the code to start a chat' },
+      he: { dir: 'rtl', font: 'Heebo',
+            a4: 'שלחו לנו הודעה בוואטסאפ', tent: 'סרקו כדי להזמין בוואטסאפ',
+            sticker: 'אנחנו בוואטסאפ', card: "דברו איתנו בוואטסאפ",
+            scan: "סרקו את הקוד כדי להתחיל צ'אט" },
+      ar: { dir: 'rtl', font: 'Cairo',
+            a4: 'راسلنا على واتساب', tent: 'امسح للطلب على واتساب',
+            sticker: 'نحن على واتساب', card: 'تحدث معنا على واتساب',
+            scan: 'امسح الرمز لبدء المحادثة' }
+    };
+
+    const $ = (id) => document.getElementById(id);
+
+    function waLink() {
+      const cc = $('cc').value;
+      const num = ($('phone').value || '').replace(/\D/g, '');
+      if (!num) return '';
+      return 'https://wa.me/' + cc + num;
+    }
+
+    function defaultHeadline() { return STRINGS[state.l][state.t]; }
+
+    // Draw everything at a given pixels-per-mm scale onto a fresh canvas, return it.
+    function render(pxmm, watermark) {
+      const [wmm, hmm] = SIZES[state.t];
+      const W = Math.round(wmm * pxmm), H = Math.round(hmm * pxmm);
+      const cv = document.createElement('canvas');
+      cv.width = W; cv.height = H;
+      const ctx = cv.getContext('2d');
+      const S = STRINGS[state.l];
+      const accent = state.accent;
+      const isCard = state.t === 'card';
+      const isSticker = state.t === 'sticker';
+
+      // Background
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, W, H);
+
+      // Top accent band
+      const bandH = H * (isCard ? 0.22 : 0.16);
+      ctx.fillStyle = accent;
+      ctx.fillRect(0, 0, W, bandH);
+
+      // Headline (inside band)
+      ctx.direction = S.dir;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = '#ffffff';
+      const headline = ($('headline').value || defaultHeadline());
+      const hSize = W * (isCard ? 0.075 : 0.062);
+      ctx.font = `800 ${hSize}px ${S.font}, Arial, sans-serif`;
+      wrapText(ctx, headline, W / 2, bandH / 2, W * 0.9, hSize * 1.15);
+
+      // WhatsApp glyph mark (simple speech bubble) under the band
+      const centerX = W / 2;
+      const linkStr = waLink() || 'https://wa.me/';
+
+      // QR
+      const qr = qrcode(0, 'M');
+      qr.addData(linkStr);
+      qr.make();
+      const count = qr.getModuleCount();
+      const qrArea = Math.min(W * 0.62, (H - bandH) * (isSticker ? 0.6 : 0.55));
+      const cell = Math.floor(qrArea / (count + 4));
+      const qrPx = cell * count;
+      const quiet = cell * 2;
+      const qrX = Math.round(centerX - qrPx / 2);
+      const qrY = Math.round(bandH + (H - bandH) * (isCard ? 0.16 : 0.20));
+
+      // White plate behind QR
+      ctx.fillStyle = '#ffffff';
+      roundRect(ctx, qrX - quiet, qrY - quiet, qrPx + quiet * 2, qrPx + quiet * 2, cell);
+      ctx.fill();
+      ctx.strokeStyle = '#e5e7eb';
+      ctx.lineWidth = Math.max(1, pxmm * 0.3);
+      ctx.stroke();
+
+      ctx.fillStyle = '#0d4a2e';
+      for (let r = 0; r < count; r++) {
+        for (let c = 0; c < count; c++) {
+          if (qr.isDark(r, c)) ctx.fillRect(qrX + c * cell, qrY + r * cell, cell, cell);
+        }
+      }
+
+      // "Scan..." caption
+      ctx.direction = S.dir;
+      ctx.fillStyle = '#111827';
+      const capSize = W * (isCard ? 0.05 : 0.042);
+      ctx.font = `700 ${capSize}px ${S.font}, Arial, sans-serif`;
+      const capY = qrY + qrPx + quiet + capSize * 1.4;
+      ctx.fillText(S.scan, centerX, capY, W * 0.92);
+
+      // Business name / number
+      const biz = ($('biz').value || '').trim();
+      const num = waLink() ? '+' + $('cc').value + ' ' + ($('phone').value || '').replace(/\D/g, '') : '';
+      ctx.fillStyle = accent;
+      const bSize = W * (isCard ? 0.055 : 0.05);
+      ctx.font = `800 ${bSize}px ${S.font}, Arial, sans-serif`;
+      let footY = capY + bSize * 1.6;
+      if (biz) { ctx.fillText(biz, centerX, footY, W * 0.92); footY += bSize * 1.35; }
+      if (num) {
+        ctx.direction = 'ltr';
+        ctx.fillStyle = '#374151';
+        ctx.font = `600 ${W * 0.038}px Poppins, Arial, sans-serif`;
+        ctx.fillText(num, centerX, footY, W * 0.92);
+      }
+
+      // Small footer credit (kept subtle; not a paywall, just attribution)
+      ctx.direction = 'ltr';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#9ca3af';
+      ctx.font = `600 ${W * 0.026}px Poppins, Arial, sans-serif`;
+      ctx.fillText('whatsappqr.com', centerX, H - W * 0.03);
+
+      if (watermark) drawWatermark(ctx, W, H);
+      return cv;
+    }
+
+    function drawWatermark(ctx, W, H) {
+      ctx.save();
+      ctx.translate(W / 2, H / 2);
+      ctx.rotate(-Math.PI / 6);
+      ctx.globalAlpha = 0.16;
+      ctx.fillStyle = '#111827';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      const step = W * 0.5;
+      ctx.font = `800 ${W * 0.09}px Poppins, sans-serif`;
+      for (let y = -H; y < H; y += step) {
+        for (let x = -W; x < W; x += W * 0.9) ctx.fillText('PREVIEW', x, y);
+      }
+      ctx.restore();
+    }
+
+    function wrapText(ctx, text, x, y, maxW, lh) {
+      const words = text.split(' ');
+      const lines = []; let line = '';
+      for (const w of words) {
+        const test = line ? line + ' ' + w : w;
+        if (ctx.measureText(test).width > maxW && line) { lines.push(line); line = w; }
+        else line = test;
+      }
+      if (line) lines.push(line);
+      const startY = y - ((lines.length - 1) * lh) / 2;
+      lines.forEach((ln, i) => ctx.fillText(ln, x, startY + i * lh, maxW));
+    }
+
+    function roundRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    }
+
+    function refresh() {
+      const cv = $('canvas');
+      try {
+        if (typeof qrcode === 'undefined') throw new Error('qr library not loaded');
+        const preview = render(PREVIEW_PXMM, !isPro());
+        cv.width = preview.width; cv.height = preview.height;
+        cv.getContext('2d').drawImage(preview, 0, 0);
+        const [w, h] = SIZES[state.t];
+        $('dims').textContent = `${w} × ${h} mm · ${Math.round(w * PRINT_PXMM)} × ${Math.round(h * PRINT_PXMM)} px at 300 DPI`;
+        $('downloadBtn').innerHTML = isPro()
+          ? '⬇ Download hi-res PNG'
+          : '⬇ Download hi-res PNG<span class="pro-tag">PRO</span>';
+      } catch (e) {
+        const ctx = cv.getContext('2d');
+        ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, cv.width, cv.height);
+        ctx.fillStyle = '#6b7280'; ctx.textAlign = 'center'; ctx.font = '16px Poppins, sans-serif';
+        ctx.fillText('Preview could not load — please refresh the page.', cv.width / 2, cv.height / 2);
+      }
+    }
+
+    function downloadCanvas(cv, name) {
+      const a = document.createElement('a');
+      a.download = name;
+      a.href = cv.toDataURL('image/png');
+      a.click();
+    }
+
+    // ---- Events ----
+    $('tmpl').addEventListener('click', (e) => {
+      const b = e.target.closest('button'); if (!b) return;
+      state.t = b.dataset.t;
+      [...$('tmpl').children].forEach(x => x.classList.toggle('active', x === b));
+      $('headline').value = ''; // reset to language/template default
+      $('headline').placeholder = defaultHeadline();
+      refresh();
+    });
+    $('lang').addEventListener('click', (e) => {
+      const b = e.target.closest('button'); if (!b) return;
+      state.l = b.dataset.l;
+      [...$('lang').children].forEach(x => x.classList.toggle('active', x === b));
+      $('headline').value = '';
+      $('headline').placeholder = defaultHeadline();
+      refresh();
+    });
+    ['phone', 'cc', 'headline', 'biz'].forEach(id => $(id).addEventListener('input', refresh));
+    $('accent').addEventListener('input', (e) => { state.accent = e.target.value; refresh(); });
+
+    $('previewDl').addEventListener('click', () => {
+      if (!waLink()) { alert('Enter a phone number first.'); return; }
+      downloadCanvas(render(PRINT_PXMM, true), `whatsapp-${state.t}-preview.png`);
+    });
+
+    $('downloadBtn').addEventListener('click', () => {
+      if (!waLink()) { alert('Enter a phone number first.'); return; }
+      if (!isPro()) { openModal(); return; }
+      downloadCanvas(render(PRINT_PXMM, false), `whatsapp-${state.t}-300dpi.png`);
+    });
+
+    // ---- Pro modal / payment ----
+    function openModal() { $('modal').classList.add('active'); setTimeout(renderPaypal, 100); }
+    $('closeModal').addEventListener('click', () => $('modal').classList.remove('active'));
+    $('modal').addEventListener('click', (e) => { if (e.target === $('modal')) $('modal').classList.remove('active'); });
+    $('restore').addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = prompt('Enter your PayPal transaction ID to restore Pro:');
+      if (id && id.trim().length > 5) { localStorage.setItem('userPlan', 'pro'); localStorage.setItem('paymentId', id.trim()); $('modal').classList.remove('active'); refresh(); alert('✅ Pro restored on this device.'); }
+    });
+
+    function renderPaypal() {
+      const el = $('paypal-poster');
+      if (!el || el.hasChildNodes() || typeof paypal === 'undefined') return;
+      paypal.Buttons({
+        createOrder: (d, actions) => actions.order.create({
+          purchase_units: [{ amount: { value: '9.99', currency_code: 'USD' }, description: 'whatsappqr.com Pro — hi-res poster & QR files' }]
+        }),
+        onApprove: async (d, actions) => {
+          const order = await actions.order.capture();
+          localStorage.setItem('userPlan', 'pro');
+          localStorage.setItem('paymentId', order.id);
+          $('modal').classList.remove('active');
+          refresh();
+          alert('✅ Thank you! Hi-res downloads are unlocked on this device.');
+        },
+        onError: () => alert('❌ Payment could not be completed — you were not charged. Try again or email support@whatsappqr.com.')
+      }).render('#paypal-poster');
+    }
+
+    // Initial render (wait for fonts so Hebrew/Arabic measure correctly)
+    $('headline').placeholder = defaultHeadline();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
+    refresh();
+  </script>
+</body>
+</html>

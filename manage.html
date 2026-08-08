@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage your Dynamic WhatsApp QR | whatsappqr.com</title>
+  <meta name="description" content="Edit where your dynamic WhatsApp QR points and view scan analytics.">
+  <link rel="canonical" href="https://whatsappqr.com/manage.html">
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', system-ui, sans-serif; color: #111827; background: linear-gradient(135deg,#f5f3ff 0%,#ecfdf5 60%,#cffafe 100%); min-height: 100vh; }
+    .disclaimer-bar { background: #1f2937; color: #e5e7eb; text-align: center; font-size: 0.8125rem; padding: 0.5rem 1rem; }
+    .disclaimer-bar strong { color: #fff; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    .back { color: #059669; text-decoration: none; font-weight: 600; }
+    h1 { font-size: 1.9rem; margin: 1rem 0 0.35rem; }
+    .sub { color: #6b7280; margin-bottom: 1.5rem; }
+    .card { background: rgba(255,255,255,0.92); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 8px 32px rgba(0,0,0,0.08); border-radius: 20px; padding: 1.5rem; margin-bottom: 1.25rem; }
+    label { display: block; font-size: 0.8125rem; font-weight: 600; color: #374151; margin: 1rem 0 0.4rem; }
+    label:first-child { margin-top: 0; }
+    input, select, textarea { width: 100%; padding: 0.65rem 0.85rem; border-radius: 10px; border: 2px solid #e5e7eb; font-size: 0.95rem; font-family: inherit; }
+    input:focus, textarea:focus, select:focus { outline: none; border-color: #7c3aed; }
+    .row { display: flex; gap: 0.6rem; }
+    .row .cc { width: 120px; flex: none; }
+    .btn { width: 100%; padding: 0.8rem; border-radius: 12px; border: none; font-weight: 700; cursor: pointer; margin-top: 1rem; }
+    .btn-purple { background: linear-gradient(135deg,#8b5cf6,#7c3aed); color: #fff; }
+    .stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.75rem; margin: 0.5rem 0 1rem; }
+    .stat { background: #f5f3ff; border: 1px solid #e9d5ff; border-radius: 12px; padding: 0.9rem; text-align: center; }
+    .stat b { display: block; font-size: 1.6rem; color: #7c3aed; }
+    .stat span { font-size: 0.72rem; color: #6b7280; }
+    .chart { display: flex; align-items: flex-end; gap: 2px; height: 120px; border-bottom: 1px solid #e5e7eb; padding-top: 0.5rem; }
+    .bar { flex: 1; background: linear-gradient(#a78bfa,#7c3aed); border-radius: 3px 3px 0 0; min-height: 2px; }
+    .muted { font-size: 0.78rem; color: #9ca3af; margin-top: 0.4rem; }
+    .err { color: #b91c1c; font-size: 0.85rem; margin-top: 0.5rem; }
+    .ok { color: #065f46; font-size: 0.85rem; margin-top: 0.5rem; }
+    .hidden { display: none; }
+    .footer { text-align: center; color: #9ca3af; font-size: 0.8125rem; margin-top: 1.5rem; }
+    .footer a { color: #059669; text-decoration: none; }
+    .expwarn { background: #fef3c7; border: 1px solid #fde68a; color: #92400e; padding: 0.6rem 0.9rem; border-radius: 10px; font-size: 0.82rem; margin-top: 0.75rem; }
+  </style>
+</head>
+<body>
+  <div class="disclaimer-bar"><strong>Independent tool.</strong> Not affiliated with, endorsed by, or sponsored by WhatsApp or Meta Platforms, Inc.</div>
+  <div class="wrap">
+    <a class="back" href="/">← Back to whatsappqr.com</a>
+    <h1>Manage your dynamic QR</h1>
+    <p class="sub">Change where your printed code points, and view scans.</p>
+
+    <div class="card" id="loginCard">
+      <label>Short link name</label>
+      <div class="row">
+        <span style="align-self:center;color:#6b7280;font-size:0.9rem;">/r/</span>
+        <input id="slug" type="text" placeholder="mybusiness">
+      </div>
+      <label>Management key</label>
+      <input id="key" type="text" placeholder="paste your key">
+      <button class="btn btn-purple" id="loadBtn">Open dashboard</button>
+      <p class="err hidden" id="loginErr"></p>
+    </div>
+
+    <div class="card hidden" id="dash">
+      <h2 style="font-size:1.2rem;">📊 <span id="dSlug"></span></h2>
+      <div class="stats">
+        <div class="stat"><b id="sTotal">0</b><span>Total scans</span></div>
+        <div class="stat"><b id="s30">0</b><span>Last 30 days</span></div>
+        <div class="stat"><b id="s7">0</b><span>Last 7 days</span></div>
+      </div>
+      <div class="chart" id="chart"></div>
+      <p class="muted">Daily scans, last 30 days.</p>
+      <p class="expwarn hidden" id="expWarn"></p>
+
+      <hr style="margin:1.25rem 0;border:none;border-top:1px solid #eee;">
+      <h3 style="font-size:1.05rem;">Change destination</h3>
+      <label>WhatsApp number</label>
+      <div class="row">
+        <select id="cc" class="cc">
+          <option value="972">🇮🇱 +972</option>
+          <option value="1">🇺🇸 +1</option>
+          <option value="44">🇬🇧 +44</option>
+          <option value="91">🇮🇳 +91</option>
+          <option value="49">🇩🇪 +49</option>
+          <option value="33">🇫🇷 +33</option>
+          <option value="971">🇦🇪 +971</option>
+        </select>
+        <input id="phone" type="tel" placeholder="501234567">
+      </div>
+      <label>Pre-filled message (optional)</label>
+      <textarea id="message" rows="2"></textarea>
+      <button class="btn btn-purple" id="saveBtn">Save changes</button>
+      <p class="ok hidden" id="saveOk">✅ Saved — your printed code now points to the new destination.</p>
+      <p class="err hidden" id="saveErr"></p>
+    </div>
+
+    <p class="footer"><a href="/dynamic.html">Create a new dynamic QR</a> · <a href="mailto:support@whatsappqr.com">Need help?</a></p>
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const params = new URLSearchParams(location.search);
+    if (params.get('slug')) $('slug').value = params.get('slug');
+    if (params.get('key')) $('key').value = params.get('key');
+
+    function splitPhone(full) {
+      const known = ['972', '971', '1', '44', '91', '49', '33'];
+      for (const k of known) if (full.startsWith(k)) return [k, full.slice(k.length)];
+      return ['972', full];
+    }
+
+    async function load() {
+      $('loginErr').classList.add('hidden');
+      const slug = ($('slug').value || '').trim().toLowerCase();
+      const key = ($('key').value || '').trim();
+      if (!slug || !key) { showErr($('loginErr'), 'Enter both fields.'); return; }
+      try {
+        const res = await fetch('/api/stats?slug=' + encodeURIComponent(slug) + '&key=' + encodeURIComponent(key));
+        const data = await res.json();
+        if (!res.ok || !data.ok) throw new Error(data.error || 'Could not load');
+        renderDash(data, key);
+      } catch (e) { showErr($('loginErr'), e.message); }
+    }
+
+    function renderDash(data, key) {
+      $('loginCard').classList.add('hidden');
+      $('dash').classList.remove('hidden');
+      $('dSlug').textContent = '/r/' + data.slug;
+      $('sTotal').textContent = data.total;
+      const last30 = data.daily.reduce((a, b) => a + b.count, 0);
+      const last7 = data.daily.slice(-7).reduce((a, b) => a + b.count, 0);
+      $('s30').textContent = last30;
+      $('s7').textContent = last7;
+      const max = Math.max(1, ...data.daily.map(d => d.count));
+      $('chart').innerHTML = data.daily.map(d =>
+        `<div class="bar" style="height:${Math.round((d.count / max) * 100)}%" title="${d.date}: ${d.count}"></div>`
+      ).join('');
+
+      if (data.expiresAt) {
+        const days = Math.round((data.expiresAt - Date.now()) / 86400000);
+        if (days < 30) { $('expWarn').classList.remove('hidden'); $('expWarn').textContent = days > 0 ? `Expires in ${days} days — renew at /dynamic.html to keep it live.` : 'This link has expired — renew at /dynamic.html.'; }
+      }
+
+      const [cc, num] = splitPhone(data.phone || '');
+      $('cc').value = cc; $('phone').value = num; $('message').value = data.message || '';
+
+      $('saveBtn').onclick = async () => {
+        $('saveErr').classList.add('hidden'); $('saveOk').classList.add('hidden');
+        try {
+          const res = await fetch('/api/update', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ slug: data.slug, key, cc: $('cc').value, phone: $('phone').value, message: $('message').value }),
+          });
+          const out = await res.json();
+          if (!res.ok || !out.ok) throw new Error(out.error || 'Save failed');
+          $('saveOk').classList.remove('hidden');
+        } catch (e) { showErr($('saveErr'), e.message); }
+      };
+    }
+
+    function showErr(el, msg) { el.textContent = msg; el.classList.remove('hidden'); }
+    $('loadBtn').addEventListener('click', load);
+    if (params.get('slug') && params.get('key')) load();
+  </script>
+</body>
+</html>
