@@ -135,6 +135,14 @@
     .trust-badges { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1rem; }
     .badge { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: #059669; font-weight: 600; }
 
+    .header-nav { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .header-nav a {
+      display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none;
+      background: rgba(255,255,255,0.9); border: 2px solid #e5e7eb; border-radius: 999px;
+      padding: 0.5rem 1.1rem; font-size: 0.9rem; font-weight: 600; color: #374151; transition: all 0.2s;
+    }
+    .header-nav a:hover { border-color: #10b981; color: #065f46; transform: translateY(-1px); }
+
     .pricing-section { margin-bottom: 3rem; }
     .pricing-cards {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -516,6 +524,10 @@
                 <div className="badge">✓ Free download</div>
                 <div className="badge">✓ No registration</div>
                 <div className="badge">✓ Works instantly</div>
+              </div>
+              <div className="header-nav">
+                <a href="/posters.html">🖨️ Poster &amp; sticker maker</a>
+                <a href="/dynamic.html">♻️ Dynamic QR + analytics</a>
               </div>
             </header>
 
